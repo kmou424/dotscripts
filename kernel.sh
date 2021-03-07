@@ -43,7 +43,7 @@ cdir() {
 KERNEL_DIR=$PWD
 
 # The name of the Kernel, to name the ZIP
-ZIPNAME="azure"
+ZIPNAME="MarisaKernel"
 
 # The name of the device for which the kernel is built
 MODEL="Redmi K20 Pro"
