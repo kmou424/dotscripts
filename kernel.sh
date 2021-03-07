@@ -46,14 +46,14 @@ KERNEL_DIR=$PWD
 ZIPNAME="azure"
 
 # The name of the device for which the kernel is built
-MODEL="Redmi Note 7 Pro"
+MODEL="Redmi K20 Pro"
 
 # The codename of the device
-DEVICE="violet"
+DEVICE="raphael"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=vendor/violet-perf_defconfig
+DEFCONFIG=raphael_defconfig
 
 # Specify compiler. 
 # 'clang' or 'gcc'
@@ -71,7 +71,7 @@ PTTG=1
 	if [ $PTTG = 1 ]
 	then
 		# Set Telegram Chat ID
-		CHATID="-1001231303646"
+		CHATID="-559760794"
 	fi
 
 # Generate a full DEFCONFIG prior building. 1 is YES | 0 is NO(default)
@@ -84,7 +84,7 @@ BUILD_DTBO=1
 	then 
 		# Set this to your dtbo path. 
 		# Defaults in folder out/arch/arm64/boot/dts
-		DTBO_PATH="xiaomi/violet-sm6150-overlay.dtbo"
+		DTBO_PATH="xiaomi/raphael-sm8150-overlay.dtbo"
 	fi
 
 # Sign the zipfile
