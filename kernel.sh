@@ -246,9 +246,7 @@ build_kernel() {
 	then
 		cp .config arch/arm64/configs/$DEFCONFIG
 		git add arch/arm64/configs/$DEFCONFIG
-		git commit -m "$DEFCONFIG: Regenerate
-
-						This is an auto-generated commit"
+		git commit -m "$DEFCONFIG: Auto regenerate"
 	fi
 
 	BUILD_START=$(date +"%s")
