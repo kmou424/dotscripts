@@ -147,7 +147,7 @@ DATE=$(export TZ=Asia/Shanghai; date +"%Y%m%d-%T")
 prepare_env() {
 	echo " "
 	msg "|| Preparing Environment ||"
-	apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential zip gcc clang libc6 curl libstdc++6 git wget libssl-dev zstd cpio flex bison
+	apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential zip gcc clang libc6 curl libstdc++6 git wget libssl-dev zstd cpio flex bison python2
 }
 
 clone() {
