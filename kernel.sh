@@ -198,7 +198,7 @@ clone() {
 	fi
 
 	msg "|| Cloning Anykernel ||"
-	git clone --depth 1 --no-single-branch https://github.com/Panchajanya1999/AnyKernel3.git
+	git clone --depth 1 --no-single-branch https://github.com/kmou424/AnyKernel3.git
 	msg "|| Cloning libufdt ||"
 	git clone https://android.googlesource.com/platform/system/libufdt "$KERNEL_DIR"/scripts/ufdt/libufdt
 }
