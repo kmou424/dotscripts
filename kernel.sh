@@ -96,6 +96,8 @@ BUILD_DTBO=0
 		DTBO_PATH="xiaomi/raphael-sm8150-overlay.dtbo"
 	fi
 
+EXTERNAL_DTBO=1
+
 # Sign the zipfile
 # 1 is YES | 0 is NO
 SIGN=0
@@ -347,7 +349,7 @@ gen_zip() {
 	sed -i 's/MARISA_AUTHOR/$KERNEL_AUTHOR/g' AnyKernel3/anykernel.sh
 
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME AnyKernel3/$IMAGE_NAME
-	if [ $BUILD_DTBO = 1 ]
+	if [ $BUILD_DTBO = 1 ] || [ $EXTERNAL_DTBO = 1 ]
 	then
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
 	fi
