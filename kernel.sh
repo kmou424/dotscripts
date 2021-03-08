@@ -55,6 +55,9 @@ DEVICE="raphael"
 # your device or check source
 DEFCONFIG=raphael_defconfig
 
+# The name of output image
+IMAGE_NAME=Image-dtb
+
 # Specify compiler. 
 # 'clang' or 'gcc'
 COMPILER=clang
@@ -305,7 +308,7 @@ build_kernel() {
 		LD=$LINKER "${MAKE[@]}" 2>&1 | tee error.log
 
 
-		if [ -f "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb ] 
+		if [ -f "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME ] 
 		then
 			msg "|| Kernel successfully compiled ||"
 			if [ $BUILD_DTBO = 1 ]
@@ -329,7 +332,7 @@ build_kernel() {
 
 gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
-	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb AnyKernel3/Image.gz-dtb
+	mv "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME AnyKernel3/$IMAGE_NAME
 	if [ $BUILD_DTBO = 1 ]
 	then
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
