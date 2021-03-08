@@ -254,7 +254,7 @@ build_kernel() {
 		git commit -m "$DEFCONFIG: Auto regenerate"
 	fi
 
-	BUILD_START=$(date +"%s")
+	BUILD_START=$(TZ=Asia/Shanghai date +"%s")
 	
 	if [ $COMPILER = "clang" ]
 	then
@@ -288,7 +288,7 @@ build_kernel() {
 		OBJCOPY=llvm-objcopy \
 		LD=$LINKER "${MAKE[@]}" 2>&1 | tee error.log
 
-		BUILD_END=$(date +"%s")
+		BUILD_END=$(TZ=Asia/Shanghai date +"%s")
 		DIFF=$((BUILD_END - BUILD_START))
 
 		if [ -f "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb ] 
