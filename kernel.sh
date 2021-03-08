@@ -154,6 +154,21 @@ cd ..
 DATE=$(export TZ=UTC-8; date +"%Y%m%d-%T")
 
 #Now Its time for other stuffs like cloning, exporting, etc
+
+# Debug{
+breakpoint_test() {
+	upload_log
+	exit 1
+}
+
+upload_log() {
+	if [ $LOG_DEBUG = "1" ]
+	then
+		tg_post_build "error.log" "$CHATID" "Debug Mode Logs"
+	fi
+}
+# }
+
 prepare_env() {
 	echo " "
 	msg "|| Preparing Environment ||"
@@ -354,9 +369,6 @@ clone
 exports
 build_kernel
 
-if [ $LOG_DEBUG = "1" ]
-then
-	tg_post_build "error.log" "$CHATID" "Debug Mode Logs"
-fi
+upload_log
 
 ##----------------*****-----------------------------##
