@@ -323,7 +323,8 @@ build_kernel() {
 			else
 			if [ "$PTTG" = 1 ]
  			then
-				tg_post_build "error.log" "<b>Build failed to compile after $((DIFF / 60)) minute(s) and $((DIFF % 60)) seconds</b>"
+				echo "out/arch/arm64/boot/Image.gz-dtb not found"
+				breakpoint_test
 			fi
 		fi
 	
