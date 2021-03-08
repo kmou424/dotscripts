@@ -272,8 +272,6 @@ build_kernel() {
 		git commit -m "$DEFCONFIG: Auto regenerate"
 	fi
 
-	BUILD_START=$(date +"%s")
-	
 	if [ $COMPILER = "clang" ]
 	then
 		MAKE+=(
@@ -306,8 +304,6 @@ build_kernel() {
 		OBJCOPY=llvm-objcopy \
 		LD=$LINKER "${MAKE[@]}" 2>&1 | tee error.log
 
-		BUILD_END=$(date +"%s")
-		DIFF=$((BUILD_END - BUILD_START))
 
 		if [ -f "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb ] 
 		then
@@ -323,8 +319,7 @@ build_kernel() {
 			else
 			if [ "$PTTG" = 1 ]
  			then
-				echo "out/arch/arm64/boot/Image.gz-dtb not found"
-				breakpoint_test
+				upload_log
 			fi
 		fi
 	
@@ -360,7 +355,7 @@ gen_zip() {
 
 	if [ "$PTTG" = 1 ]
  	then
-		tg_post_build "$ZIP_FINAL.zip" "Build took : $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)"
+		upload_log
 	fi
 	cd ..
 }
