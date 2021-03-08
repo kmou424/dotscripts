@@ -151,8 +151,13 @@ COMMIT_HEAD=$(git log --oneline -1)
 DATE=$(TZ=Asia/Shanghai date +"%Y%m%d-%T")
 
 #Now Its time for other stuffs like cloning, exporting, etc
+prepare_env() {
+	echo " "
+	msg "|| Preparing Environment ||"
+	apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential zip gcc clang libc6 curl libstdc++6 git wget libssl-dev zstd cpio
+}
 
- clone() {
+clone() {
 	echo " "
 	msg "|| Cloning Clang-13 ||"
 	git clone --depth=1 https://github.com/kdrag0n/proton-clang.git clang-llvm
@@ -341,6 +346,7 @@ gen_zip() {
 	cd ..
 }
 
+prepare_env
 clone
 exports
 build_kernel
