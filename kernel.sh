@@ -173,7 +173,7 @@ breakpoint_test() {
 upload_log() {
 	if [ $LOG_DEBUG = "1" ]
 	then
-		tg_post_build "build.log" "坏耶! 构建失败了" "Debug Mode Logs"
+		tg_post_build "build.log" "好耶! 有log诶" "Debug Mode Logs"
 	fi
 }
 # }
