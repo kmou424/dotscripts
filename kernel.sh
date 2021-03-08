@@ -46,7 +46,7 @@ KERNEL_DIR=$PWD
 ZIPNAME="MarisaKernel"
 
 # The version of the kernel
-KERNEL_VERSION="1.0-R"
+KERNEL_VERSION="perf-R"
 
 # Kernel author(your name)
 KERNEL_AUTHOR="kmou424"
