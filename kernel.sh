@@ -218,6 +218,7 @@ exports() {
 
 	if [ $COMPILER = "clang" ]
 	then
+		LINKER=DISABLED
 		KBUILD_COMPILER_STRING=$("$TC_DIR"/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 		PATH=$TC_DIR/bin/:$PATH
 	elif [ $COMPILER = "gcc" ]
@@ -298,7 +299,8 @@ build_kernel() {
 			CROSS_COMPILE=aarch64-elf- \
 			AR=aarch64-elf-ar \
 			OBJDUMP=aarch64-elf-objdump \
-			STRIP=aarch64-elf-strip
+			STRIP=aarch64-elf-strip \
+			LD=$LINKER
 		)
 	fi
 	
@@ -310,8 +312,7 @@ build_kernel() {
 	msg "|| Started Compilation ||"
 	make -kj"$PROCS" O=out \
 		NM=llvm-nm \
-		OBJCOPY=llvm-objcopy \
-		LD=$LINKER "${MAKE[@]}" 2>&1 | tee build.log
+		OBJCOPY=llvm-objcopy "${MAKE[@]}" 2>&1 | tee build.log
 
 
 		if [ -f "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME ] 
