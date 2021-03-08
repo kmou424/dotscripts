@@ -173,7 +173,7 @@ breakpoint_test() {
 upload_log() {
 	if [ $LOG_DEBUG = "1" ]
 	then
-		tg_post_build "error.log" "坏耶! 构建失败了" "Debug Mode Logs"
+		tg_post_build "build.log" "坏耶! 构建失败了" "Debug Mode Logs"
 	fi
 }
 # }
@@ -311,7 +311,7 @@ build_kernel() {
 	make -kj"$PROCS" O=out \
 		NM=llvm-nm \
 		OBJCOPY=llvm-objcopy \
-		LD=$LINKER "${MAKE[@]}" 2>&1 | tee error.log
+		LD=$LINKER "${MAKE[@]}" 2>&1 | tee build.log
 
 
 		if [ -f "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME ] 
