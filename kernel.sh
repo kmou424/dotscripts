@@ -173,7 +173,7 @@ breakpoint_test() {
 upload_log() {
 	if [ $LOG_DEBUG = "1" ]
 	then
-		tg_post_build "error.log" "$CHATID" "Debug Mode Logs"
+		tg_post_build "error.log" "坏耶! 构建失败了" "Debug Mode Logs"
 	fi
 }
 # }
@@ -370,7 +370,7 @@ gen_zip() {
 
 	if [ "$PTTG" = 1 ]
  	then
-		tg_post_build "$ZIP_FINAL.zip" "$CHATID"
+		tg_post_build "$ZIP_FINAL.zip" "好耶! 构建成功了"
 	fi
 	cd ..
 }
