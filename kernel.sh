@@ -351,7 +351,7 @@ gen_zip() {
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
 	fi
 	cdir AnyKernel3
-	zip -r9 $ZIPNAME-$DEVICE-$KERNEL_VERSION-"$DATE" * -x .git README.md *.zip
+	zip -r9 $ZIP_FINAL.zip * -x .git README.md *.zip
 
 	if [ $SIGN = 1 ]
 	then
@@ -366,9 +366,11 @@ gen_zip() {
 		ZIP_FINAL="$ZIP_FINAL-signed"
 	fi
 
+	ls *.zip
+
 	if [ "$PTTG" = 1 ]
  	then
-		upload_log
+		tg_post_build "$ZIP_FINAL.zip" "$CHATID"
 	fi
 	cd ..
 }
