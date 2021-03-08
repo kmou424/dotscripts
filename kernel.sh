@@ -45,6 +45,9 @@ KERNEL_DIR=$PWD
 # The name of the Kernel, to name the ZIP
 ZIPNAME="MarisaKernel"
 
+# The version of the kernel
+KERNEL_VERSION="1.0-R"
+
 # The name of the device for which the kernel is built
 MODEL="Redmi K20 Pro"
 
@@ -332,16 +335,17 @@ build_kernel() {
 
 gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
+
+	## Prepare a final zip variable
+	ZIP_FINAL="$ZIPNAME-$DEVICE-$KERNEL_VERSION-$DATE"
+
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME AnyKernel3/$IMAGE_NAME
 	if [ $BUILD_DTBO = 1 ]
 	then
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
 	fi
 	cdir AnyKernel3
-	zip -r9 $ZIPNAME-$DEVICE-"$DATE" * -x .git README.md *.zip
-
-	## Prepare a final zip variable
-	ZIP_FINAL="$ZIPNAME-$DEVICE-$DATE"
+	zip -r9 $ZIPNAME-$DEVICE-$KERNEL_VERSION-"$DATE" * -x .git README.md *.zip
 
 	if [ $SIGN = 1 ]
 	then
