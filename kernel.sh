@@ -43,10 +43,7 @@ cdir() {
 KERNEL_DIR=$PWD
 
 # The name of the Kernel, to name the ZIP
-ZIPNAME="MarisaKernel"
-
-# The version of the kernel
-KERNEL_VERSION="perf-R"
+KERNEL_NAME="MarisaKernel-perf-R"
 
 # Kernel author(your name)
 KERNEL_AUTHOR="kmou424"
@@ -284,9 +281,11 @@ build_kernel() {
 		make clean && make mrproper && rm -rf out
 	fi
 
+	KERNEL_NAME=$(source marisa.sh)
+
 	if [ "$PTTG" = 1 ]
  	then
-		tg_post_msg "<b>第 $KBUILD_BUILD_VERSION CI构建任务开始</b>%0A<b>操作系统 : </b><code>$DISTRO</code>%0A<b>$ZIPNAME 版本 : </b><code>$KERNEL_VERSION</code>%0A<b>Linux 版本 : </b><code>$KERVER</code>%0A<b>日期 : </b><code>$(export TZ=UTC-8; date)</code>%0A<b>设备 : </b><code>$MODEL [$DEVICE]</code>%0A<b>CI 服务商 : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>核心数 : </b><code>$PROCS</code>%0A<b>工具链 : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Linker : </b><code>$LINKER</code>%0A<b>构建分支 : </b><code>$CI_BRANCH</code>%0A<b>包含dtbo的构建 : </b><code>$DTBO_AVAILABLE</code>%0A<b>内核 HEAD Commit : </b><code>$COMMIT_HEAD</code>%0A<b>脚本 HEAD Commit : </b><code>$SCRIPT_COMMIT_HEAD</code>%0A<b>构建类型 : </b>$BUILD_TYPE"
+		tg_post_msg "<b>第 $KBUILD_BUILD_VERSION CI构建任务开始</b>%0A<b>操作系统 : </b><code>$DISTRO</code>%0A<b>内核-版本 : </b><code>$KERNEL_NAME</code>%0A<b>Linux 版本 : </b><code>$KERVER</code>%0A<b>日期 : </b><code>$(export TZ=UTC-8; date)</code>%0A<b>设备 : </b><code>$MODEL [$DEVICE]</code>%0A<b>CI 服务商 : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>核心数 : </b><code>$PROCS</code>%0A<b>工具链 : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Linker : </b><code>$LINKER</code>%0A<b>构建分支 : </b><code>$CI_BRANCH</code>%0A<b>包含dtbo的构建 : </b><code>$DTBO_AVAILABLE</code>%0A<b>内核 HEAD Commit : </b><code>$COMMIT_HEAD</code>%0A<b>脚本 HEAD Commit : </b><code>$SCRIPT_COMMIT_HEAD</code>%0A<b>构建类型 : </b>$BUILD_TYPE"
 	fi
 
 	make O=out $DEFCONFIG
@@ -356,7 +355,7 @@ gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
 
 	## Prepare a final zip variable
-	ZIP_FINAL="$ZIPNAME-$DEVICE-$KERNEL_VERSION-$DATE"
+	ZIP_FINAL="$KERNEL_NAME-$DEVICE--$DATE"
 
 	sed -i 's/MARISA_NAME/$ZIP_FINAL/g' AnyKernel3/anykernel.sh
 	sed -i 's/MARISA_AUTHOR/$KERNEL_AUTHOR/g' AnyKernel3/anykernel.sh
