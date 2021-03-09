@@ -357,8 +357,8 @@ gen_zip() {
 	## Prepare a final zip variable
 	ZIP_FINAL="$KERNEL_NAME-$DEVICE-$DATE"
 
-	sed -i 's/MARISA_NAME/$ZIP_FINAL/g' AnyKernel3/anykernel.sh
-	sed -i 's/MARISA_AUTHOR/$KERNEL_AUTHOR/g' AnyKernel3/anykernel.sh
+	sed -i "s/MARISA_NAME/$ZIP_FINAL/g" AnyKernel3/anykernel.sh
+	sed -i "s/MARISA_AUTHOR/$KERNEL_AUTHOR/g" AnyKernel3/anykernel.sh
 
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME AnyKernel3/$IMAGE_NAME
 	if [ $BUILD_DTBO = 1 ] || [ $EXTERNAL_DTBO = 1 ]
