@@ -355,7 +355,7 @@ gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
 
 	## Prepare a final zip variable
-	ZIP_FINAL="$KERNEL_NAME-$DEVICE--$DATE"
+	ZIP_FINAL="$KERNEL_NAME-$DEVICE-$DATE"
 
 	sed -i 's/MARISA_NAME/$ZIP_FINAL/g' AnyKernel3/anykernel.sh
 	sed -i 's/MARISA_AUTHOR/$KERNEL_AUTHOR/g' AnyKernel3/anykernel.sh
