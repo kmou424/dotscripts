@@ -99,7 +99,7 @@ BUILD_DTBO=0
 		DTBO_PATH="xiaomi/raphael-sm8150-overlay.dtbo"
 	fi
 
-EXTERNAL_DTBO=1
+EXTERNAL_DTBO=0
 
 DTBO_AVAILABLE="否"
 
