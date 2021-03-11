@@ -183,7 +183,7 @@ SCRIPT_COMMIT_HEAD=$(git log --oneline -1)
 cd ..
 
 # Set Date 
-DATE=$(export TZ=UTC-8; date +"%Y%m%d-%T")
+DATE=$(export TZ=UTC-8; date +"%Y%m%d-%H%M%S")
 
 #Now Its time for other stuffs like cloning, exporting, etc
 
