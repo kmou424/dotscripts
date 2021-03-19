@@ -64,13 +64,6 @@ DEVICE="raphael"
 # your device or check source
 DEFCONFIG=raphael_defconfig
 
-if [ $MI9 = 1 ]
-then
-	MODEL="Mi 9"
-	DEVICE="cepheus"
-	DEFCONFIG=cepheus_defconfig
-fi
-
 # The name of output image
 IMAGE_NAME=Image-dtb
 
@@ -104,10 +97,6 @@ BUILD_DTBO=1
 		# Set this to your dtbo path. 
 		# Defaults in folder out/arch/arm64/boot/dts
 		DTBO_PATH="xiaomi/raphael-sm8150-overlay.dtbo"
-		if [ $MI9 = 1 ]
-		then
-			DTBO_PATH="xiaomi/cepheus-sm8150-overlay.dtbo"
-		fi
 	fi
 
 EXTERNAL_DTBO=1
