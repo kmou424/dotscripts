@@ -43,7 +43,7 @@ cdir() {
 KERNEL_DIR=$PWD
 
 # The name of the Kernel, to name the ZIP
-KERNEL_NAME="MarisaKernel-perf-R"
+KERNEL_NAME="IMMENSiTY-K"
 
 # Kernel author(your name)
 KERNEL_AUTHOR="kmou424"
@@ -227,7 +227,7 @@ clone() {
 	fi
 
 	msg "|| Cloning Anykernel ||"
-	git clone --depth 1 --no-single-branch https://github.com/kmou424/AnyKernel3.git
+	git clone --depth 1 --no-single-branch https://github.com/UtsavBalar1231/AnyKernel3.git
 	msg "|| Cloning libufdt ||"
 	git clone https://android.googlesource.com/platform/system/libufdt "$KERNEL_DIR"/scripts/ufdt/libufdt
 }
@@ -292,7 +292,7 @@ build_kernel() {
 		make clean && make mrproper && rm -rf out
 	fi
 
-	KERNEL_NAME=$(source marisa.sh)
+	KERNEL_NAME=$(source imm.sh)
 
 	if [ "$PTTG" = 1 ]
  	then
@@ -368,8 +368,8 @@ gen_zip() {
 	## Prepare a final zip variable
 	ZIP_FINAL="$KERNEL_NAME-$DEVICE-$DATE"
 
-	sed -i "s/MARISA_NAME/$ZIP_FINAL/g" AnyKernel3/anykernel.sh
-	sed -i "s/MARISA_AUTHOR/$KERNEL_AUTHOR/g" AnyKernel3/anykernel.sh
+	#sed -i "s/IMM_NAME/$ZIP_FINAL/g" AnyKernel3/anykernel.sh
+	#sed -i "s/IMM_AUTHOR/$KERNEL_AUTHOR/g" AnyKernel3/anykernel.sh
 
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/$IMAGE_NAME AnyKernel3/$IMAGE_NAME
 	if [ $BUILD_DTBO = 1 ] || [ $EXTERNAL_DTBO = 1 ]
