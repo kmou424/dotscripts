@@ -98,7 +98,7 @@ DEF_REG=0
 
 # Build dtbo.img (select this only if your source has support to building dtbo.img)
 # 1 is YES | 0 is NO(default)
-BUILD_DTBO=0
+BUILD_DTBO=1
 	if [ $BUILD_DTBO = 1 ]
 	then 
 		# Set this to your dtbo path. 
@@ -110,7 +110,7 @@ BUILD_DTBO=0
 		fi
 	fi
 
-EXTERNAL_DTBO=0
+EXTERNAL_DTBO=1
 
 DTBO_AVAILABLE="否"
 
