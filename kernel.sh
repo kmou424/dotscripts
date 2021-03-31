@@ -48,6 +48,9 @@ KERNEL_NAME="IMMENSiTY-K"
 # Kernel author(your name)
 KERNEL_AUTHOR="kmou424"
 
+# Set branch for AnyKernel3
+AK3_BRANCH="imm-a10"
+
 ## Check for CI
 	if [ -z "$KERNEL_RELESE" ]
 	then
@@ -219,7 +222,7 @@ clone() {
 	fi
 
 	msg "|| Cloning Anykernel ||"
-	git clone --depth 1 --no-single-branch https://github.com/UtsavBalar1231/AnyKernel3.git
+	git clone https://github.com/kmou424/AnyKernel3.git -b $AK3_BRANCH
 	msg "|| Cloning libufdt ||"
 	git clone https://android.googlesource.com/platform/system/libufdt "$KERNEL_DIR"/scripts/ufdt/libufdt
 }
@@ -359,6 +362,8 @@ gen_zip() {
 
 	## Prepare a final zip variable
 	ZIP_FINAL="$KERNEL_NAME-$DEVICE-$DATE"
+
+	rm -rf AnyKernel3/.git
 
 	#sed -i "s/IMM_NAME/$ZIP_FINAL/g" AnyKernel3/anykernel.sh
 	#sed -i "s/IMM_AUTHOR/$KERNEL_AUTHOR/g" AnyKernel3/anykernel.sh
