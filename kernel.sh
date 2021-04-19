@@ -52,9 +52,11 @@ KERNEL_AUTHOR="kmou424"
 AK3_BRANCH="a10"
 
 ## Check for CI
-	if [ -z "$BUILD_TYPE" ]
+	if [ -z "$KERNEL_RELESE" ]
 	then
 		BUILD_TYPE="#Beta(测试版)"
+	else
+		BUILD_TYPE="#Release(正式版)"
 	fi
 
 # The name of the device for which the kernel is built
