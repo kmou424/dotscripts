@@ -169,6 +169,7 @@ KERVER=$(make kernelversion)
 
 # Set a commit head
 COMMIT_HEAD=$(git log --oneline -1)
+LAST_COMMIT=$(git rev-parse --verify --short=10 HEAD)
 cd dotscripts
 SCRIPT_COMMIT_HEAD=$(git log --oneline -1)
 cd ..
