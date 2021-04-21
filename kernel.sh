@@ -204,8 +204,8 @@ prepare_env() {
 
 clone() {
 	echo " "
-	msg "|| Cloning Clang-13 ||"
-	git clone --depth=1 https://github.com/kdrag0n/proton-clang.git clang-llvm
+	msg "|| Cloning Clang-11 ||"
+	git clone --depth=1 https://github.com/kmou424/proton-clang-11.git clang-llvm
 	# Toolchain Directory defaults to clang-llvm
 	TC_DIR=$KERNEL_DIR/clang-llvm
 
